@@ -1,12 +1,12 @@
 
 package org.examples.spring.databinding.jpa;
 
-
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+
 
 import org.examples.spring.databinding.map.User;
 
