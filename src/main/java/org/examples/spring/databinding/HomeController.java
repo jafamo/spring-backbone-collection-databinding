@@ -9,7 +9,7 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String getHome() {
-		return "redirect:/map";
+		return "redirect:/jpa";
 	}
 	
 }

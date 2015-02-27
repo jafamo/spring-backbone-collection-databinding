@@ -26,6 +26,7 @@ public class JPADataBindingController {
 	@RequestMapping(value = "/jpa", method = RequestMethod.POST)
 	public String updateUsers(@ModelAttribute("form") Form form) {
 		// Save the binded data to our "Repository"
+		//Set entrySet() Returns a collection view of the mappings contained in this map.
 		Set<Entry<Long, User>> entrySet = form.getUsers().entrySet();
 		for (Entry<Long, User> entry : entrySet) {
 			Long key = entry.getKey();

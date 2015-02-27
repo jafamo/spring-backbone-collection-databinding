@@ -143,5 +143,52 @@ public class JPADataBindingControllerTest {
 		// Let's check that's true
 		assertEquals(0, repository.count());
 	}
-
+	
+	/**
+	 * @author jafamo
+	 * @throws Exception
+	 */
+	@Test
+	public void itDeletesAUserAfterOne() throws Exception {
+		// Initialize a Map of users
+		
+		//create repository for save users
+		IUserRepository repository = controller.getRepository();
+		
+		User mike = new User();
+		mike.setName("Mike");
+		mike.setEmail("mike@mail.com");
+		repository.save(mike);
+		
+		User javier = new User();
+		javier.setName("Javier");
+		javier.setEmail("javier@mail.com");
+		repository.save(javier);
+		
+		
+		User mariano = new User();
+		mariano.setName("Mariano");
+		mariano.setEmail("mariano@mail.com");
+		repository.save(mariano);
+		
+		Long id = mike.getId();
+		Long id1 = javier.getId();
+		//Long id2 = mariano.getId();
+		
+		// Modify John's email
+		mockMvc.perform(post("/jpa")
+		
+				.param(String.format("users[%d].id", id1), "")
+				.param(String.format("users[%d].name", id1), "javier")
+				.param(String.format("users[%d].email", id1), "javier@mail.com"))
+				
+				.andExpect(status().is3xxRedirection());
+		//Don't need
+		//repository.delete(javier);
+		
+		// Let's check that's true
+		assertEquals(2, repository.count());
+	}
+	
+	
 }
