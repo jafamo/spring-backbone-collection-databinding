@@ -34,7 +34,9 @@ public class JPADataBindingController {
 			if (key > 0 && user.getId() == null) {
 				this.repository.delete(user);
 			} else {
+				System.out.println("error1: "+user.getId());
 				this.repository.save(user);
+				System.out.println("error2: "+user.getId());
 			}
 		}
 		return "redirect:/jpa";
